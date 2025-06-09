@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ChessWap</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+  <script src="./chessboard/js/chessboard-0.3.0.min.js"></script>
+  <link rel="stylesheet" href="./chessboard/css/chessboard-0.3.0.min.css">
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<style>
+  body {
+    background: radial-gradient(circle at center, #e0e0e0, #1e1e1e);
+    font-family: sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #222;
+  }
+
+  .container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    width: 400px;
+    text-align: center;
+  }
+
+  #board {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #222;
+  }
+
+  #roomNumbers {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    text-align: center;
+  }
+
+  button {
+    margin-top: 10px;
+    background: #5c7cfa;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #364fc7;
+  }
+
+  #state {
+    margin-top: 14px;
+    font-weight: 500;
+    min-height: 20px;
+  }
+
+  .row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .col {
+    flex: 1;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(90deg, #222 50%, transparent 50%) 0 0 / 80px 80px repeat,
+      linear-gradient(0deg, #222 50%, transparent 50%) 0 0 / 80px 80px repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+  }
+</style>
+
+</head>
+<body>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <div class="container">
+    <div id="board"></div>
+
+    <div id="player"></div>
+    <div id="roomNumbers">Enter a room number</div>
+
+    <form onsubmit="connect(); return false;">
+      <div class="row">
+        <div class="col">
+          <input type="number" id="room" min="1">
+        </div>
+        <div class="col">
+          <button id="button" type="submit">Connect</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="state">Join Game</div>
+  </div>
+
+  <script src="./game.js"></script>
+</body>
+</html>
